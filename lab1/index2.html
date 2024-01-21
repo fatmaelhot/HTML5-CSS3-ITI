@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProgressBars</title>
+    <style>
+        .slidercontainer {
+            display: flex;
+        }
+        #slidertextbox {
+            width: 100px;
+        }
+        .progresscontainer {
+            margin-top: 20px;
+        }
+        progress {
+            appearance: none;
+            width: 200px;
+            height: 20px;
+            background-color: antiquewhite;
+            box-shadow: 0 0 3px red inset;
+        }
+        progress::-webkit-progress-bar {
+            background-color: antiquewhite;
+            box-shadow: 0 0 3px red inset;
+        }
+        progress::-webkit-progress-value {
+            background-color: darkgoldenrod;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="slidercontainer">
+        <input type="text" id="slidertextbox" oninput="validateNumberRange(this)">
+        <input type="range" min="1" max="8" value="1" class="slider" id="myRange">
+        <span id="sliderval">1</span>
+    </div>
+    <br><br><br>
+    <div class="progresscontainer">
+        <span>progress</span>
+        <progress value="1" max="8"></progress>
+        <span id="progval">0%</span>
+    </div>
+
+    <script>
+        const textbox = document.getElementById("slidertextbox");
+        const slider = document.getElementById("myRange");
+        const sliderval = document.getElementById("sliderval");
+        const progress = document.querySelector("progress");
+        const progval = document.getElementById("progval");
+
+        function validateNumberRange(input) {
+            var value = parseInt(input.value);
+            if (isNaN(value) || value < 1 || value > 8) {
+                input.value = "";
+            } else {
+                fixSlider(value);
+                updateProgress(value);
+            }
+        }
+
+        function fixSlider(val) {
+            slider.value = val;
+            sliderval.innerText = val;
+        }
+
+        function updateProgress(value) {
+            const percentage = (value / 8) * 100;
+            progress.value = value;
+            progval.innerText = `${percentage}%`;
+        }
+
+        slider.oninput = function() {
+            textbox.value = this.value;
+            sliderval.innerText = this.value;
+            updateProgress(parseInt(this.value));
+        }
+    </script>
+</body>
+</html>

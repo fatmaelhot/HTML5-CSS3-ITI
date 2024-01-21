@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background">
+        <div class="music-player">
+            <div id="imgcontainer">
+                <img src="1.jpg" alt="" id="img">
+            </div>
+            <audio id="myAudio" src="1.mp3" controls>
+                Your browser does not support the audio element.
+            </audio>
+            <div id="buttonscontainer">
+                <button class="buttons" id="play"><i class="fas fa-play"></i></button>
+                <button class="buttons" id="pause"><i class="fas fa-pause"></i></button>
+                <button class="buttons" id="stop"><i class="fas fa-stop"></i></button>
+                <button class="buttons" id="mute"><i class="fas fa-volume-mute"></i></button>
+            </div>
+            <div id="controls">
+                <table>
+                    <tr>
+                        <th>Volume</th>
+                        <th>
+                            <input type="range" min="1" max="100" value="50" class="slider" id="volume">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Speed</th>
+                        <th>
+                            <input type="range" min="1" max="100" value="50" class="slider" id="speed">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Duration</th>
+                        <th><div id="duration"></div>
+                            <input type="range" id="durationRange" value="0" step="1" min="0"></th>
+                    </tr>
+                </table>
+            </div>
+             <div id="songs">
+                <button class="songbuttons" id="song1">La Tabky</button>
+                <button class="songbuttons" id="song2">Al Hadika</button>
+                <button class="songbuttons" id="song3">Remy</button>
+                <button class="songbuttons" id="song4">Asdkaa</button>
+            </div>
+            
+        </div>
+    </div>
+   <script src="main.js"></script>
+</body>
+</html>

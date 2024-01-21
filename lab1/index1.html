@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Text Changer</title>
+  <style>
+    body {
+      text-align: center;
+      padding: 50px;
+    }
+
+    #colorText {
+      font-size: 24px;
+      font-weight: bold;
+      transition: color 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Color Text Changer</h1>
+
+  <label for="range1">Red:</label>
+  <input type="range" id="range1" min="0" max="255" value="0">
+
+  <label for="range2">Green:</label>
+  <input type="range" id="range2" min="0" max="255" value="0">
+
+  <label for="range3">Blue:</label>
+  <input type="range" id="range3" min="0" max="255" value="0">
+
+  <p id="colorText">Change the 3 color Ranges above and observe my color change</p>
+
+  <script>
+    // Function to update the text color
+    function updateColor() {
+      const red = document.getElementById('range1').value;
+      const green = document.getElementById('range2').value;
+      const blue = document.getElementById('range3').value;
+
+      const colorText = document.getElementById('colorText');
+      colorText.style.color = `rgb(${red}, ${green}, ${blue})`;
+    }
+
+    // Add event listeners to the range inputs
+    document.getElementById('range1').addEventListener('input', updateColor);
+    document.getElementById('range2').addEventListener('input', updateColor);
+    document.getElementById('range3').addEventListener('input', updateColor);
+  </script>
+
+</body>
+</html>
