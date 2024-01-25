@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>players</title>
+    <style>
+ 
+#player1{
+    width: 200px;
+    height: 400px;
+   position: absolute;
+   left: 700px;
+   transform: rotateY(180deg);
+}
+
+#player2{
+    width: 200px;
+    height: 400px;
+    position: absolute;
+    left: -20px;
+    transform: rotateY(180deg);
+}
+
+#grass{
+    width: 700px;
+    height: 100px;
+    position: absolute;
+    top:295px;
+    left: 130px;
+}
+
+#ball{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top:295px;
+    left: 100px;
+    animation: pass 4s infinite linear , rotate 2s infinite linear;
+
+}
+
+
+@keyframes pass {
+    0% {
+        left: 60px;
+      }
+      50% {
+        left: 650px;
+      }
+      100% {
+        left: 60px;
+      }
+
+}
+
+@keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%
+    {  
+        transform: rotate(360deg);
+    }
+    
+}
+
+    </style>
+</head>
+
+<body>
+    <div >
+
+    
+        <img src="./imgs/player1.png" id="player1" alt="">
+    
+        <img src="./imgs/grass.png" id="grass" alt="">
+    
+        <img src="./imgs/player2.png" id="player2" alt="">
+    
+        <img src="./imgs/Black-Red_Egyptian_Soccer_ball.png" id="ball">
+    
+        </div>
+
+   
+</body>
+</html>

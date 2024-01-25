@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter</title>
+    <style>
+
+#filteredPhoto
+{
+    display: block;
+    position: relative;
+}
+
+button 
+{
+   margin: 10px ;
+}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img src="./imgs/thankful-businessman-with-open-arms-field_254268-363.jpg" id="filteredPhoto">
+    
+        <button onclick="saturateEvent()">saturate</button>
+        <button onclick="opacityEvent()">opacity</button>
+        <button onclick="invertEvent()">invert</button>
+        <button onclick="sepiaEvent()">sepia</button>
+        <button onclick="grayScaleEvent()">gray scale</button>
+    
+        </div>
+
+        <script>
+            let img = document.getElementById("filteredPhoto");
+
+
+function grayScaleEvent()
+{
+    img.style.filter = "grayscale(100%)";
+}
+
+function saturateEvent()
+{
+    img.style.filter = "saturate(50%)";
+}
+
+function invertEvent()
+{
+    img.style.filter = "invert(100%)";
+}
+
+function sepiaEvent()
+{
+    img.style.filter = "sepia(100%)";
+}
+
+function opacityEvent()
+{
+    img.style.filter = "opacity(50%)";
+}
+
+        </script>
+</body>
+</html>
