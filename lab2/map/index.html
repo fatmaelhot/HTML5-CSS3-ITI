@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+</head>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    button{
+        background-color: green;
+        border-radius: 10px;
+        border: none;
+        padding: 10px 30px;
+        color: white;
+        margin: 5px;
+    }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+</style>
+<body>
+    <div id="mainDiv"></div>
+
+    <h2>Your location information</h2>
+
+    <table>
+        <tr>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>Time</th>
+        </tr>
+        <tr>
+          <td id="latitude"></td>
+          <td id="long"></td>
+          <td id="time"></td>
+        </tr>
+    </table>
+
+    <button onclick="showMap()">Map</button>
+    <button onclick="showLocationInfo()">Location Info</button>
+
+    <script>
+        const latVal = document.getElementById('latitude');
+        const longVal = document.getElementById('long');
+        const timeVal = document.getElementById('time');
+        const mainDiv = document.getElementById('mainDiv');
+
+        function showMap() {
+            mainDiv.innerHTML = ''; // Clear previous content
+
+            window.navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    latVal.innerHTML = position.coords.latitude;
+                    longVal.innerHTML = position.coords.longitude;
+
+                    const UNIX_timestamp = position.timestamp;
+                    const time = new Date(UNIX_timestamp * 1000).toLocaleString();
+
+                    timeVal.innerHTML = time;
+
+                    mainDiv.innerHTML += `<iframe 
+                        width="600" 
+                        height="270" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        marginheight="0" 
+                        marginwidth="0" 
+                        src="https://maps.google.com/maps?q=${position.coords.latitude}+${position.coords.longitude}&hl=es&z=14&amp;output=embed">
+                    </iframe>
+                    <p>Can't see the map? <a href="https://maps.google.com/maps?q=${position.coords.latitude}+${position.coords.longitude}&hl=es&z=14" target="_blank">View in Google Maps</a></p>`;
+                },
+                () => {
+                    mainDiv.innerHTML = "Update Your Browser!";
+                    latVal.innerHTML = "";
+                    longVal.innerHTML = "";
+                    timeVal.innerHTML = "";
+                }
+            );
+        }
+
+        function showLocationInfo() {
+            mainDiv.innerHTML = ''; // Clear previous content
+
+            window.navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    latVal.innerHTML = position.coords.latitude;
+                    longVal.innerHTML = position.coords.longitude;
+
+                    const UNIX_timestamp = position.timestamp;
+                    const time = new Date(UNIX_timestamp * 1000).toLocaleString();
+                    timeVal.innerHTML = time;
+                },
+                () => {
+                    mainDiv.innerHTML = "Update Your Browser!";
+                    latVal.innerHTML = "";
+                    longVal.innerHTML = "";
+                    timeVal.innerHTML = "";
+                }
+            );
+        }
+    </script>
+</body>
+</html>
+

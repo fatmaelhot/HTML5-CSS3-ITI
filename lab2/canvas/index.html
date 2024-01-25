@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+  <title>Canvas</title>
+</head>
+<body>
+  <input type="color" id="circleColor" value="#ff0000">
+  <button onclick="generateRandomCircles()">Click Me</button>
+  <canvas id="myCanvas" width="800" height="300"></canvas>
+
+  <script>
+    function generateRandomCircles() {
+      const canvas = document.getElementById('myCanvas');
+      const ctx = canvas.getContext('2d');
+      const circleColor = document.getElementById('circleColor').value;
+
+      // Clear existing circles
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Generate and draw random circles
+      for (let i = 0; i < 100; i++) { // Adjust the number of circles as needed
+        const radius = Math.random() * 50 + 10;
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, 2 * Math.PI);
+        ctx.fillStyle = circleColor;
+        ctx.strokeStyle=circleColor;
+        //ctx.fill();
+        ctx.stroke();
+      }
+    }
+  </script>
+</body>
+</html>
